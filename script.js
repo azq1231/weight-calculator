@@ -1,0 +1,60 @@
+// 等待 DOM 完全加載
+document.addEventListener('DOMContentLoaded', function() {
+    const countButtons = document.querySelectorAll('.count-btn');
+    let selectedCount = null;
+
+    // 計算函數
+    function calculate() {
+        // 獲取輸入值
+        const totalWeight = parseFloat(document.getElementById('total-weight').value);
+        
+        // 獲取結果顯示區域
+        const resultDiv = document.getElementById('result');
+        const processDiv = document.getElementById('process');
+
+        // 清除之前的結果
+        processDiv.innerHTML = '';
+        
+        // 驗證輸入
+        if (isNaN(totalWeight) || totalWeight <= 0 || selectedCount === null) {
+            resultDiv.textContent = '請輸入有效的總重量並選擇數量';
+            return;
+        }
+
+        // 計算單一重量
+        const singleWeight = totalWeight / selectedCount;
+        resultDiv.textContent = `單一重量: ${singleWeight.toFixed(2)}`;
+
+        // 顯示減重過程
+        let currentWeight = totalWeight;
+        while (currentWeight > 0) {
+            const newWeight = Math.max(0, currentWeight - singleWeight);
+            const processText = `當前重量: ${currentWeight.toFixed(2)} - ${singleWeight.toFixed(2)} = ${newWeight.toFixed(2)}`;
+            const p = document.createElement('p');
+            p.textContent = processText;
+            processDiv.appendChild(p);
+            currentWeight = newWeight;
+        }
+    }
+
+    // 為數量按鈕添加點擊事件
+    countButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 移除所有按鈕的 active 類
+            countButtons.forEach(btn => btn.classList.remove('active'));
+            // 為當前按鈕添加 active 類
+            this.classList.add('active');
+            // 保存選擇的數量
+            selectedCount = parseInt(this.dataset.count);
+            // 自動計算
+            calculate();
+        });
+    });
+
+    // 為總重量輸入框添加輸入事件
+    document.getElementById('total-weight').addEventListener('input', function() {
+        if (selectedCount !== null) {
+            calculate();
+        }
+    });
+}); 
