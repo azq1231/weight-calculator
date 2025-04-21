@@ -32,7 +32,7 @@
 
 ## 線上演示
 
-訪問 [GitHub Pages](https://您的用戶名.github.io/weight-calculator) 查看線上演示。
+訪問 [GitHub Pages](https://azq1231.github.io/weight-calculator) 查看線上演示。
 
 ## 作者
 
