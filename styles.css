@@ -97,11 +97,9 @@ input {
 }
 
 .process {
-    display: none;
+    display: block;
     margin-top: 1rem;
-    text-align: left;
-    max-height: 300px;
-    overflow-y: auto;
+    text-align: center;
     padding: 1rem;
     background-color: #f8f9fa;
     border-radius: 5px;
@@ -109,7 +107,9 @@ input {
 
 .process p {
     margin: 0.5rem 0;
-    color: #555;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .time-display {
