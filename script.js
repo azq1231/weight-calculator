@@ -32,19 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 顯示每次減重後的結果
         let currentWeight = totalWeight;
-        while (currentWeight >= 0) {
+        for (let i = 0; i < selectedCount; i++) {
             const button = document.createElement('button');
             button.className = 'result-btn';
             button.textContent = currentWeight.toFixed(2);
             buttonsContainer.appendChild(button);
             currentWeight = Math.max(0, currentWeight - singleWeight);
-            if (currentWeight === 0) {
-                const finalButton = document.createElement('button');
-                finalButton.className = 'result-btn';
-                finalButton.textContent = "0.00";
-                buttonsContainer.appendChild(finalButton);
-                break;
-            }
         }
         processDiv.appendChild(buttonsContainer);
     }
