@@ -88,14 +88,16 @@ input {
 
 .result {
     margin-top: 1.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background-color: #f8f9fa;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: #2c3e50;
+    font-weight: bold;
 }
 
 .process {
+    display: none;
     margin-top: 1rem;
     text-align: left;
     max-height: 300px;

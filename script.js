@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultDiv = document.getElementById('result');
         const processDiv = document.getElementById('process');
 
-        // 清除之前的結果
-        processDiv.innerHTML = '';
+        // 隱藏計算過程區域
+        processDiv.style.display = 'none';
         
         // 驗證輸入
         if (isNaN(totalWeight) || totalWeight <= 0 || selectedCount === null) {
@@ -23,18 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 計算單一重量
         const singleWeight = totalWeight / selectedCount;
-        resultDiv.textContent = `單一重量: ${singleWeight.toFixed(2)}`;
-
-        // 顯示減重過程
-        let currentWeight = totalWeight;
-        while (currentWeight > 0) {
-            const newWeight = Math.max(0, currentWeight - singleWeight);
-            const processText = `當前重量: ${currentWeight.toFixed(2)} - ${singleWeight.toFixed(2)} = ${newWeight.toFixed(2)}`;
-            const p = document.createElement('p');
-            p.textContent = processText;
-            processDiv.appendChild(p);
-            currentWeight = newWeight;
-        }
+        resultDiv.textContent = `${singleWeight.toFixed(2)}`;
     }
 
     // 為數量按鈕添加點擊事件
