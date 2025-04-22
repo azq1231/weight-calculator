@@ -96,10 +96,27 @@ input {
     font-weight: bold;
 }
 
+.result-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.result-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: default;
+    transition: all 0.3s;
+}
+
 .process {
     display: block;
     margin-top: 1rem;
-    text-align: center;
     padding: 1rem;
     background-color: #f8f9fa;
     border-radius: 5px;

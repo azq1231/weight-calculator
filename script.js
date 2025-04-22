@@ -26,20 +26,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const singleWeight = totalWeight / selectedCount;
         resultDiv.textContent = `單次減重: ${singleWeight.toFixed(2)}`;
 
+        // 創建結果按鈕容器
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.className = 'result-buttons';
+        
         // 顯示每次減重後的結果
         let currentWeight = totalWeight;
         while (currentWeight >= 0) {
-            const p = document.createElement('p');
-            p.textContent = `${currentWeight.toFixed(2)}`;
-            processDiv.appendChild(p);
+            const button = document.createElement('button');
+            button.className = 'result-btn';
+            button.textContent = currentWeight.toFixed(2);
+            buttonsContainer.appendChild(button);
             currentWeight = Math.max(0, currentWeight - singleWeight);
             if (currentWeight === 0) {
-                const finalP = document.createElement('p');
-                finalP.textContent = "0.00";
-                processDiv.appendChild(finalP);
+                const finalButton = document.createElement('button');
+                finalButton.className = 'result-btn';
+                finalButton.textContent = "0.00";
+                buttonsContainer.appendChild(finalButton);
                 break;
             }
         }
+        processDiv.appendChild(buttonsContainer);
     }
 
     // 為數量按鈕添加點擊事件
